@@ -10,4 +10,4 @@ Based on the type of user, only relevant content will be served. For example, a 
 The web application leverages the 'express' and 'mysql2' Node.js modules to convert HTML form data entered on the web application into SQL queries that will be sent to the MySQL database. The output of these queries will be sent to the web application and accordingly displayed to the end user.
 
 ## What this Repository Holds
-All the relevant web application files will be here (HTML, CSS, JS, Node.js modules). A SQL dump file containing all metadata of the SQL database will also be here.
+All the relevant web application files will be here (HTML, CSS, JS, Node.js modules). A SQL dump file containing all metadata of the MySQL database will also be here.
