@@ -61,15 +61,15 @@ app.post('/auth', function(request, response) {
 				console.log(error);
 				// If the account exists
 				if (results.length > 0) {
-
-						// Authenticate the user
-						request.session.loggedin = true;
-						request.session.username = username;
-						// Redirect to visitor front page
-						response.redirect('/visitor_login_frontpage.html');
+					
+					// Authenticate the user
+					request.session.loggedin = true;
+					request.session.username = username;
+					// Redirect to visitor front page
+					response.redirect('/visitor_login_frontpage.html');
 				} 
 				else {
-						response.send('Incorrect Username and/or Password!');
+					alert('Incorrect Username and/or Password!');
 				}			
 				response.end();
 			});
@@ -100,7 +100,7 @@ app.post('/auth', function(request, response) {
 				}
 			}
 			else {
-					response.send('Incorrect Username and/or Password!');
+					alert('Incorrect Username and/or Password!');
 				}			
 				response.end();
 			});			
@@ -108,7 +108,7 @@ app.post('/auth', function(request, response) {
 		
 	} 
 	else {
-		response.send('Please enter Username and Password!');
+		alert('Please enter Username and Password!');
 		response.end();
 	}
 });
