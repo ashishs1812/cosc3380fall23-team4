@@ -1,0 +1,289 @@
+<html>
+  <head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+    <title>Gift Shop Management</title>
+
+    <link rel="stylesheet" href="employee_giftshop_alt.css" />
+  </head>
+
+  <body>
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5HZHZH"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+        lazy="true"
+      ></iframe>
+    </noscript>
+
+    <body>
+      <div class="hero">
+        <nav>
+          <a href="employee_frontpage.html">
+          <img src="images/MFA.png" class="logo" />
+          <ul>
+            <li><a href="employee_login_frontpage.html">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Collection</a></li>
+            <li><a href="">Exhibitions</a></li>
+            <li><a href="">Tickets</a></li>
+            <li><a href="">Shop</a></li>
+            <li><a href="employee_database.html">Database</a></li>
+            <li><a href="frontpage.html">Log Out</a></li>
+          </ul>
+        </nav>
+
+    <div>
+      <h1 class="title-align" style="color:rgb(222, 44, 44)">Gift Shop Management</h1>
+
+      <div id="formContainer" class="inner">
+        <label for="itemNameInput"> Item Name: </label>
+        <input
+          type="text"
+          id="itemNameInput"
+          placeholder="Enter the item's name"
+        />
+
+        <label for="itemIDInput"> Item ID: </label>
+        <input
+          type="number"
+          id="itemIDInput"
+          placeholder="Enter a valid item ID"
+        />
+
+        <label for="itemCostInput"> Item Cost: </label>
+        <input
+          type="number"
+          id="itemCostInput"
+          placeholder="Enter the item's cost"
+          step="0.01"
+        />
+
+        <label for="discountInput"> Discount: </label>
+        <input
+          type="text"
+          id="discountInput"
+          placeholder="Enter the item's discount"
+        />
+
+        <label for="stockInput"> Stock: </label>
+        <input
+          type="text"
+          id="stockInput"
+          placeholder="Enter the item's stock"
+        />
+
+        <label for="descriptionInput"> Descripton: </label>
+
+        <textarea id="descriptionInput" placeholder="Enter a description of the item"></textarea>
+
+
+        <button onclick="validateAndAddData()">Add</button>
+      </div>
+    </div>
+      </div>
+
+    <table id="outputTable">
+      <tr>
+        <th>Item Name</th>
+        <th>Item ID</th>
+        <th>Item Cost</th>
+        <th>Discount</th>
+        <th>Stock</th>
+        <th>Description</th>
+      </tr>
+    </table>
+
+    <script>
+
+function validateAndAddData() {
+  let itemName = document.getElementById("itemNameInput").value;
+        let itemID = document.getElementById("itemIDInput").value;
+        let itemCost = document.getElementById("itemCostInput").value;
+        let discount = document.getElementById("discountInput").value;
+        let stock = document.getElementById("stockInput").value;
+        let description = document.getElementById("descriptionInput").value;
+
+
+    if (!itemName || !itemID || !itemCost || !discount || !stock || !description) {
+        alert("All categories need to be filled out.");
+        return;
+    }
+
+
+    if (itemName.length > 200) {
+        alert("Item name should be at most 200 characters.");
+        return;
+    }
+
+    if (itemID.length !== 8) {
+    alert("Item ID must be exactly 8 digits.");
+    return;
+}
+
+
+    if (itemCost.length > 7 || parseFloat(itemCost) <= 0) {
+    alert("Item cost can have a maximum of 7 numbers and has to be greater than 0.");
+    return;
+}
+
+    if (discount < 1 || discount > 100) {
+    alert("Discount can not be below 1 or greater than 100.");
+    return;
+}
+
+if (stock.length > 7 || parseInt(stock) <= 0) {
+    alert("Stock can have a maximum of 7 numbers and has to be greater than 0.");
+    return;
+}
+
+    if (description.length > 1000) {
+        alert("Description should be at most 1000 characters.");
+        return;
+    }
+
+
+    addData();
+}
+
+
+
+      function addData() {
+     
+        let itemName = document.getElementById("itemNameInput").value;
+        let itemID = document.getElementById("itemIDInput").value;
+        let itemCost = document.getElementById("itemCostInput").value;
+        let discount = document.getElementById("discountInput").value;
+        let stock = document.getElementById("stockInput").value;
+        let description = document.getElementById("descriptionInput").value;
+
+       
+        let table = document.getElementById("outputTable");
+        let newRow = table.insertRow(table.rows.length);
+
+      
+        newRow.insertCell(0).innerHTML = itemName;
+        newRow.insertCell(1).innerHTML = itemID;
+        newRow.insertCell(2).innerHTML = itemCost;
+        newRow.insertCell(3).innerHTML = discount;
+        newRow.insertCell(4).innerHTML = stock;
+        newRow.insertCell(5).innerHTML = description;
+        newRow.insertCell(6).innerHTML =
+          '<button onclick="editData(this)">Edit</button>' +
+          '<button onclick="deleteData(this)">Delete</button>';
+
+
+        clearInputs();
+      }
+
+      function editData(button) {
+
+  let row = button.parentNode.parentNode;
+
+
+  let itemNameCell = row.cells[0];
+  let itemIDCell = row.cells[1];
+  let itemCostCell = row.cells[2];
+  let discountCell = row.cells[3];
+  let stockCell = row.cells[4];
+  let descriptionCell = row.cells[5];
+
+
+  let itemNameInput = prompt(
+    "Enter the updated item name:",
+    itemNameCell.innerHTML
+  );
+  let itemIDInput = prompt(
+    "Enter the updated item ID:",
+    itemIDCell.innerHTML
+  );
+  let itemCostInput = prompt(
+    "Enter the updated item cost:",
+    itemCostCell.innerHTML
+  );
+  let discountInput = prompt(
+    "Enter the updated discount:",
+    discountCell.innerHTML
+  );
+  let stockInput = prompt(
+    "Enter the updated stock:",
+    stockCell.innerHTML
+  );
+  let descriptionInput = prompt(
+    "Enter the updated description:",
+    descriptionCell.innerHTML
+  );
+
+
+  if (!itemNameInput || !itemIDInput || !itemCostInput || !discountInput || !stockInput || !descriptionInput) {
+    alert("All categories need to be filled out.");
+    return;
+  }
+
+  if (itemNameInput.length > 200) {
+    alert("Item name should be at most 200 characters.");
+    return;
+  }
+
+  if (itemIDInput.length !== 8) {
+    alert("Item ID must be exactly 8 digits.");
+    return;
+}
+
+
+  if (isNaN(itemCostInput) || itemCostInput.length > 7 || parseFloat(itemCostInput) <= 0) {
+    alert("Item cost should be a number, have a maximum of 7 numbers, and be greater than 0.");
+    return;
+  }
+
+  if (isNaN(discountInput) || discountInput < 1 || discountInput > 100) {
+    alert("Discount should be a number, not be below 1, and not be greater than 100.");
+    return;
+  }
+
+  if (isNaN(stockInput) || stockInput.length > 7 || parseInt(stockInput) <= 0) {
+    alert("Stock should be a number, have a maximum of 7 numbers, and be greater than 0.");
+    return;
+  }
+
+  if (descriptionInput.length > 1000) {
+    alert("Description should be at most 1000 characters.");
+    return;
+  }
+
+
+  itemNameCell.innerHTML = itemNameInput;
+  itemIDCell.innerHTML = itemIDInput;
+  itemCostCell.innerHTML = itemCostInput;
+  discountCell.innerHTML = discountInput;
+  stockCell.innerHTML = stockInput;
+  descriptionCell.innerHTML = descriptionInput;
+}
+      function deleteData(button) {
+       
+        let row = button.parentNode.parentNode;
+
+        
+        row.parentNode.removeChild(row);
+      }
+      function clearInputs() {
+
+        document.getElementById("itemNameInput").value = "";
+        document.getElementById("itemIDInput").value = "";
+        document.getElementById("itemCostInput").value = "";
+        document.getElementById("discountInput").value = "";
+        document.getElementById("stockInput").value = "";
+        document.getElementById("descriptionInput").value = "";
+      }
+    </script>
+  </body>
+</html>

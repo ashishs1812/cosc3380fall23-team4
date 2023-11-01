@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+    <title>Artwork View</title>
+
+    <link rel="stylesheet" href="employee_artwork_view.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <div class="hero">
+      <nav>
+        <a href="employee_login_frontpage.html">
+        <img src="images/MFA.png" class="logo" />
+        <ul>
+          <li><a href="employee_login_frontpage.html">Home</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Collection</a></li>
+          <li><a href="">Exhibitions</a></li>
+          <li><a href="">Tickets</a></li>
+          <li><a href="">Shop</a></li>
+          <li><a href="employee_database.html">Database</a></li>
+          <li><a href="frontpage.html">Log Out</a></li>
+        </ul>
+      </nav>
+
+
+      <div class="container">
+        <div class="search-bar">
+          <div id="select">
+            <p id="selectText">Title</p>
+            <img src="images/arrow.png">
+            <ul id="list">
+              <li class="options">Title</li>
+              <li class="options">Creator</li>
+              <li class="options">Date of Creation</li>
+              <li class="options">Country of Origin</li>
+              <li class="options">Culture</li>
+              <li class="options">Medium</li>
+            </ul>
+          </div>
+            <input type="text" id="inputfield" placeholder="Search In Title">
+            
+        </div>
+      </div>
+
+
+
+
+      <script>
+
+        let select = document.getElementById("select");
+        let list = document.getElementById("list");
+        let selectText = document.getElementById("selectText");
+        let inputfield = document.getElementById("inputfield");
+        let options = document.getElementsByClassName("options");
+
+        select.onclick = function(){
+          list.classList.toggle("open");
+        }
+
+        for(option of options)
+        {
+          option.onclick = function()
+          {
+            selectText.innerHTML = this.innerHTML;
+            inputfield.placeholder = "Search In " + selectText.innerHTML;
+          }
+        }
+
+        var users = [
+          { username: "visitor", password: "Visitorpassword123*", href: "visitor_login_frontpage.html" },
+          { username: "employee", password: "Employeepassword123*", href: "employee_login_frontpage.html" },
+          { username: "manager", password: "Managerpassword123*", href: "manager_login_frontpage.html" },
+        ];
+      
+        var button = document.getElementById("login");
+      
+        button.onclick = function (event) {
+          event.preventDefault(); 
+          var username = document.getElementById("username").value;
+          var password = document.getElementById("password").value;
+      
+          if (username === "" && password === "") {
+            alert("Please enter both a username and a password");
+          } else if (username === "") {
+            alert("Please enter a username");
+          } else if (password === "") {
+            alert("Please enter a password");
+          } else {
+            var found = false;
+      
+            for (var i = 0; i < users.length; i++) {
+              if (username === users[i].username && password === users[i].password) {
+                window.location.href = users[i].href;
+                found = true;
+                break;
+              }
+            }
+      
+            if (!found) {
+              alert("You have entered an invalid username or password");
+            }
+          }
+        };
+
+      
+      
+
+
+
+      </script>
+      
+      
+  </body>
+</html>
