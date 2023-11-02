@@ -15,7 +15,7 @@ console.debug('Server listening on port ' + port);
 
 
 const connection = mysql.createConnection({
-	host     : '172.25.114.132',
+	host     : '10.0.0.185',
 	user     : '',
 	password : '',
 	database : 'artmuseum'
@@ -24,8 +24,10 @@ const connection = mysql.createConnection({
 	console.log(data);
 });
 
-console.log('new connection est');
+console.log('new origin connection est at:' + Date.now());
 
+app.use(express.static(__dirname + '/static'));
+app.set('view engine', 'ejs');
 
 app.use(cookieSession({
 	secret: 'secret'
@@ -66,10 +68,14 @@ app.post('/auth', function(request, response) {
 					request.session.loggedin = true;
 					request.session.username = username;
 					// Redirect to visitor front page
+					console.log('new visitor login est at:' + Date.now());
 					response.redirect('/visitor_login_frontpage.html');
 				} 
 				else {
-					alert('Incorrect Username and/or Password!');
+					//alert('Incorrect Username and/or Password!');
+					console.log('new login FAIL est at:' + Date.now());
+					const val = 'Incorrect Username and/or Password!';
+					response.render('loginerror', {values: val});
 				}			
 				response.end();
 			});
@@ -88,6 +94,7 @@ app.post('/auth', function(request, response) {
 					request.session.loggedin = true;
 					request.session.username = username;
 					// Redirect to manager front page
+					console.log('new manager login at:' + Date.now());
 					response.redirect('/manager_login_frontpage.html');
 				}
 				else if(results.at(0)['ROLE'] === 'employee') {
@@ -95,12 +102,17 @@ app.post('/auth', function(request, response) {
 					request.session.loggedin = true;
 					request.session.username = username;
 					// Redirect to employee front page
-					response.redirect('/employee_login_frontpage.html');	
+					response.redirect('/employee_login_frontpage.html');
+					console.log('new employee login at:' + Date.now());	
 
 				}
 			}
 			else {
-					alert('Incorrect Username and/or Password!');
+					//alert('Incorrect Username and/or Password!');
+
+					const val = 'Incorrect Username and/or Password!';
+					console.log('new login FAIL est at:' + Date.now());
+					response.render('loginerror', {values: val});
 				}			
 				response.end();
 			});			
@@ -108,7 +120,10 @@ app.post('/auth', function(request, response) {
 		
 	} 
 	else {
-		alert('Please enter Username and Password!');
+		//alert('Please enter Username and Password!');
+		const val = 'Please enter Username and Password!';
+		console.log('new login FAIL est at:' + Date.now());
+		response.render('loginerror', {values: val});
 		response.end();
 	}
 });
