@@ -1,4 +1,4 @@
-# cosc3380fall23-team4
+# COSC 3380 - Database Systems - Team 4
 This repo holds source files for our COSC 3380 - Database Systems project. 
 
 ## Project Description
