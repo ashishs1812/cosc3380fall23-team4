@@ -1,0 +1,40 @@
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {  
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #db5041;
+    color: white;
+}
+
+
+
+#foot {
+    font-size: x-large;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 3px;
+}
+
+#head {
+    margin-left: 50px;
+    margin-top: 25px;
+}

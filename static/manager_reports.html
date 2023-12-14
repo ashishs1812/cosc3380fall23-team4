@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+    <title>Fine Arts Museum of Texas</title>
+
+    <link rel="stylesheet" href="report.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <div class="hero">
+      <nav>
+        <a href="manager_login_frontpage.html">
+        <img src="images/MFA.png" class="logo" />
+        <ul>
+          <li><a href="report.html">Reports</a></li>
+          <li><a href="frontpage.html">Log Out</a></li>
+        </ul>
+      </nav>
+
+
+      <div>
+      <h1 class="sales-reports" style="color:rgb(222, 44, 44)">Sales Reports</h1>
+<form action="/reports" method="post">
+       <br>
+       <label for="startdate1" class="date">Start Date:</label>
+       <input type="text" id="startdate1" name="startdate1" placeholder="MM-DD-YYYY">
+
+       <label for="enddate1" class="date">End Date:</label>
+       <input type="text" id="enddate1" name="enddate1" placeholder="MM-DD-YYYY"> <br>
+
+      <button type="submit" id="report1" name="report1"class="buttons">Theater Ticket Revenue</button>
+
+      <button type="submit" id="report2" name="report2"class="buttons">Exhibition Ticket Revenue</button>
+      <button type="submit" id="report3" name="report3"class="buttons">Gift Shop Revenue</button>
+
+      
+      
+    </div>
+
+    <div>
+      <h2 class="employee-reports" style="color:rgb(222, 44, 44)">Employee Reports</h2>
+
+       <br>
+       <label for="startdate2" class="date">Start Date:</label>
+       <input type="text" id="startdate2" name="startdate2" placeholder="MM-DD-YYYY">
+
+       <label for="enddate2" class="date">End Date:</label>
+       <input type="text" id="enddate2" name="enddate2" placeholder="MM-DD-YYYY"><br>
+    
+      <button type="submit" id="report4" name="report4"class="buttons">Hours Worked for all Departments</button>
+
+    
+    </div>
+  </form>
+  <script>
+
+    
+  </script>
+
+</body>
+
+
+
+
+
+</html>

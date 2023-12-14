@@ -1,0 +1,293 @@
+<html>
+  <head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+    <title>Gift Shop Management</title>
+
+    <link rel="stylesheet" href="employee_giftshop_alt.css" />
+  </head>
+
+  <body>
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5HZHZH"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+        lazy="true"
+      ></iframe>
+    </noscript>
+
+    <body>
+      <div class="hero">
+        <nav>
+          <a href="employee_frontpage.html">
+          <img src="images/MFA.png" class="logo" />
+          <ul>
+            <li><a href="load_giftshop_login_frontpage.html">Gift Shop Notifications</a></li>
+            <li><a href="employee_giftshop_alt.html">Gift Shop Alteration</a></li>
+            <li><a href="frontpage.html">Log Out</a></li>
+          </ul>
+        </nav>
+
+    <div>
+      <h1 class="title-align" style="color:rgb(222, 44, 44)">Gift Shop Management</h1>
+      <form action="/employee_giftshop_altpull" method="post">
+      <button type="submit" id="pull inventory" name="pull inventory" value="0">Pull Inventory</button>
+       </form>
+      <div id="formContainer" class="inner">
+        <form action="/employeegiftshopadd" method="post">
+        <label for="itemNameInput"> Item Name: </label>
+        <input
+          type="text"
+          id="itemNameInput"
+          name="itemNameInput"
+          placeholder="Enter the item's name"
+        />
+
+        <label for="itemIDInput"> Item ID: </label>
+        <input
+          type="text"
+          id="itemIDInput"
+          name="itemIDInput"
+          placeholder="Enter a valid item ID"
+        />
+
+        <label for="itemCostInput"> Item Cost: </label>
+        <input
+          type="number"
+          id="itemCostInput"
+          name="itemCostInput"
+          placeholder="Enter the item's cost"
+          step="0.01"
+        />
+
+        <label for="discountInput"> Discount: </label>
+        <input
+          type="number"
+          id="discountInput"
+          name="discountInput"
+          placeholder="Enter the item's discount"
+        />
+
+        <label for="stockInput"> Stock: </label>
+        <input
+          type="number"
+          id="stockInput"
+          name="stockInput"
+          placeholder="Enter the item's stock"
+        />
+
+        <label for="descriptionInput"> Descripton: </label>
+
+        <textarea id="descriptionInput" name="descriptionInput" placeholder="Enter a description of the item"></textarea>
+
+        <label for="deletedInput"> "Deleted": </label>
+        <input
+          type="text"
+          id="deletedInput"
+          name="deletedInput"
+          placeholder="Enter 'yes' or 'no'"
+        />
+
+
+        <button type="submit" id="addbutton" name="addbutton" value="0">Add</button>
+        <button type="submit" id="updatebutton" name="updatebutton" value="0">Update</button>
+      </form>
+      <button  onclick="validateAdd()">Validate Add</button>
+      <button  onclick="validateAlteration()">Validate Update</button>
+      </div>
+    </div>
+      </div>
+
+    <table id="outputTable">
+      <tr>
+        <th>Item Name</th>
+        <th>Item ID</th>
+        <th>Item Cost</th>
+        <th>Discount</th>
+        <th>Stock</th>
+        <th>Description</th>
+        <th>"Deleted"</th>
+      </tr>
+    </table>
+
+    <script>
+      function validateAdd() {
+        let itemName = document.getElementById("itemNameInput").value;
+        let itemID = document.getElementById("itemIDInput").value;
+        let itemCost = document.getElementById("itemCostInput").value;
+        let discount = document.getElementById("discountInput").value;
+        let stock = document.getElementById("stockInput").value;
+        let description = document.getElementById("descriptionInput").value;
+        let del = document.getElementById("deletedInput").value;
+
+        if (!itemName && !itemID && !itemCost && !discount & !stock && !description && !del) {
+          alert("All categories need to be filled out.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        }
+
+        if (!itemName) {
+          alert("Item Name is required for Add.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        } else if (itemName.length > 150) {
+          alert("Item name should be at most 150 characters.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        }
+
+        if (!itemID) {
+          alert("Item ID is required for Add and must be formatted like G111111111.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        } else if(!/^G\d{9}$/.test(itemID)) {
+          alert("Item ID must be formatted like G(9) or G#########.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        }
+
+        if (!itemCost) {
+          alert("Item Cost is required for Add.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        } else if(parseFloat(itemCost) <= 0 || parseFloat(itemCost) > 1000000) {
+          alert("Item cost can be no less than 1 and no more than 1000000.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        }
+
+        if (!discount){
+          alert("Discount is required for Add.");
+          return;
+        }
+        else if(discount < 0 || discount> 100) {
+          alert("Discount can be no less than 0 and no greater than 100.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        }
+
+        if (!stock) {
+          alert("Stock is required for Add.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        } else if(parseInt(stock) <= 0 || parseInt(stock) > 100000) {
+          alert("Stock must be higher than 0 but no more than 100000.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        }
+
+        if (!description) {
+          alert("A description of the item is required for Add.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        } else if(description.length > 1000) {
+          alert("Descriptions should not exceed 1000 characters.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        } 
+
+        if (!del) {
+          alert("'Deleted' is required for Add.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        } else if(!(del == "no") && !(del =="yes")) {
+          alert("'Deleted' must be 'yes' or 'no'.");
+          document.getElementById("addbutton").value = "0";
+          return;
+        } 
+
+
+        document.getElementById("addbutton").value = "1";
+        alert("Add is Valid! You can now click the 'Add' button.");
+        return;
+    }
+    function validateAlteration() {
+
+        let itemName = document.getElementById("itemNameInput").value;
+        let itemID = document.getElementById("itemIDInput").value;
+        let itemCost = document.getElementById("itemCostInput").value;
+        let discount = document.getElementById("discountInput").value;
+        let stock = document.getElementById("stockInput").value;
+        let description = document.getElementById("descriptionInput").value;
+        let del = document.getElementById("deletedInput").value;
+
+
+
+        if (!itemID || !/^G\d{9}$/.test(itemID)) {
+          alert("Valid Item ID is required for Update.");
+          document.getElementById("updatebutton").value = "0";
+          return;
+        }
+
+        if (!itemName && !itemCost && !discount & !stock && !description && !del) {
+          alert("No changes made, please enter new values to be updated.");
+          document.getElementById("updatebutton").value = "0";
+          return;
+        }
+
+        if(!(itemName === "")){
+          if (itemName.length > 150) {
+            alert("Item name should be at most 150 characters.");
+            document.getElementById("updatebutton").value = "0";
+            return;
+          }
+        }
+
+        if(!(itemCost === "")) {
+          if (parseFloat(itemCost) <= 0 || parseFloat(itemCost) > 1000000) {
+            alert("Item cost can be no less than 1 and no more than 1000000");
+            document.getElementById("updatebutton").value = "0";
+            return;
+          }
+        }
+
+        if(!(discount === "")) {
+          if (discount < 0 || discount > 100)   {
+            alert("Discount can be no less than 0 and no greater than 100");
+            document.getElementById("updatebutton").value = "0";
+            return;
+          }
+        }        
+
+        if(!(stock === "")) {
+          if(parseInt(stock) <= 0 || parseInt(stock) > 100000) {
+            alert("Stock must be higher than 0 but no more than 100000");
+            document.getElementById("updatebutton").value = "0";
+            return;
+          }
+        }       
+
+        if(!(description === "")) {
+          if (description.length > 1000)   {
+            alert("Description should be at most 1000 characters.");
+            document.getElementById("updatebutton").value = "0";
+            return;
+          }
+        }   
+
+        if(!(del === "")) {
+          if (!(del == "no") && !(del == "yes"))   {
+            alert("'Deleted' must be 'yes' or 'no'.");
+            document.getElementById("updatebutton").value = "0";
+            return;
+          }
+        }   
+
+      document.getElementById("updatebutton").value = "1";
+        alert("Update is Valid! You can now click the 'Update' button.");
+        return;
+    }
+  
+
+    </script>
+  </body>
+</html>
