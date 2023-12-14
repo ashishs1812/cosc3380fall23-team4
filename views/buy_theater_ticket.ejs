@@ -1,0 +1,105 @@
+
+
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+    <title>Fine Arts Museum of Texas</title>
+
+    <link rel="stylesheet" href="buy_exhibition_ticket.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <div class="hero">
+      <nav>
+        <img src="images/MFA.png" class="logo" />
+        <ul>
+          <li><a href="load_visitor_museumupdatemessages.html">Museum Update Messages</a></li>
+          <li><a href="visitor_artwork_view.html">Collection</a></li>
+          <li><a href="load_visitor_buyexhibitionticket.html">Exhibitions</a></li>
+          <li><a href="load_visitor_buytheaterticket.html">Theater</a></li>
+          <li><a href="load_visitor_buygiftshop.html">Shop</a></li>
+          <!--<li><a href="visitor_database.html">Database</a></li>-->
+          <li><a href="frontpage.html">Log Out</a></li>
+        </ul>
+      </nav>
+
+      <h1 class="title-align" style="color: rgb(222, 44, 44)">Theater Tickets</h1>
+      
+     
+      <div id="Tables">
+        <%- message %>
+        <br>
+        <form action="visitor_theater_purchase" method="post">
+
+        <label for="ticketid"> </label>
+        <input
+          type="text"
+          id="ticketid"
+          name="ticketid"
+          placeholder="Ticket ID"
+        />
+
+        <label for="undertwelve"> </label>
+          <input
+            type="number"
+            id="undertwelve"
+            name="undertwelve"
+            placeholder="# of 'Under 12' tickets"
+          />
+
+        
+          <label for="between"> </label>
+            <input
+              type="number"
+              id="between"
+              name="between"
+              placeholder="# of 'Age 12 to 65' tickets"
+            />
+
+            <label for="oversixfive"> </label>
+              <input
+                type="number"
+                id="oversixfive"
+                name="oversixfive"
+                placeholder="# of 'Age 65 plus' tickets"
+              />
+              <button type="submit" id="purchase" name="purchase"class="purchase-button">Purchase</button>
+
+
+            </form>
+        <table>
+          <tr>
+            <th>Ticket ID</th>
+            <th>Film Name</th>
+            <th>Description</th>
+            <th>Available Seats</th>
+            <th>Under 12 Ticket Price</th>
+            <th>Ages 12-65 Ticket Price</th>
+            <th>Ages 65+ Ticket Price</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+          </tr>
+          <tr>
+          <%- values %>
+
+      
+
+    
+        </table>
+      </div>
+      
+
+
+
+</body>
+
+</html>

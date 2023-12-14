@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+    <title>Artwork View</title>
+
+    <link rel="stylesheet" href="employee_artwork_view.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <div class="hero">
+      <nav>
+        <a href="visitor_login_frontpage.html">
+        <img src="images/MFA.png" class="logo" />
+        <ul>
+          <li><a href="employee_artwork_view.html">Artwork Search</a></li>
+          <li><a href="employee_artwork_alt.html">Artwork Alteration</a></li>
+          <li><a href="employee_exhibition_alt.html">Exhibition Alteration</a></li>
+          <li><a href="employee_exhibitionticket_alt.html">Exhibition Timeslot Alteration</a></li>
+          <li><a href="frontpage.html">Log Out</a></li>
+        </ul>
+      </nav>
+
+      <div class="whatthepageis">
+        <h1>Employee Artwork Search</h1>
+      </div>
+
+      <div class="container">
+        <!-- Add the search button -->
+<form action="/employeeartworksearch" method="post"> 
+  <div class="search-bar">
+    <div id="select">
+      <p id="selectText" name="selectText">Title</p>
+      <img src="images/arrow.png">
+      <ul id="list">
+        <li class="options" name="Title">Title</li>
+        <li class="options" name="Creator">Creator</li>
+        <li class="options" name="Date of Creation">Date of Creation</li>
+        <li class="options" name="Country of Origin">Country of Origin</li>
+        <li class="options" name="Culture">Culture</li>
+        <li class="options" name="Medium">Medium</li>
+      </ul>
+    </div>
+    <input type="text" id="inputfield" name="inputfield" placeholder="Search In Title" required>
+  </div>
+
+  <br><button type="submit" id="search" name="searchbutton" class="search-button" value="Title">Search</button>
+  <!--<button type="submit" id="searchisnull" name="searchnullbutton" class="search-button" value="Title">Search IS NULL</button>-->
+  <button type="submit" id="searchall" name="searchallbutton" class="search-button" value="searchall">Search All</button>
+</form>
+<form action="/employeeartworkalteration" method="post">
+  <input type="text" id="artworkidfield" name="artworkidfield" class="search-bar"placeholder="Enter Artwork ID" required><br>
+  <button type="submit" id="search" name="searchbutton" class="redirect-button"  >Send to Alteration page</button>
+</form>
+</div>
+
+
+
+
+        <table id="outputTable">
+          <tr>
+            <th>Title</th>
+            <th>Creator Name</th>
+            <th>Creation Date</th>
+            <th>Country of Origin</th>
+            <th>Culture</th>
+            <th>Medium</th>
+            <th>Dimensions</th>
+            <th>Description</th>
+            <th>Artwork ID</th>
+            <th>Exhibition Number</th>
+            <th>External Collection</th>
+            <th>Department</th>
+            <th>"Deleted"</th>
+          </tr>
+          <%- values %>
+        </table>
+
+
+
+
+
+      <script>
+        
+        let select = document.getElementById("select");
+        let list = document.getElementById("list");
+        let selectText = document.getElementById("selectText");
+        let inputfield = document.getElementById("inputfield");
+        let options = document.getElementsByClassName("options");
+        let search = document.getElementById("search");
+        let searchnull = document.getElementById("searchisnull");
+
+        select.onclick = function(){
+          list.classList.toggle("open");
+        }
+
+        for(option of options)
+        {
+          option.onclick = function()
+          {
+            selectText.innerHTML = this.innerHTML;
+            inputfield.placeholder = "Search In " + selectText.innerHTML;
+            search.value = this.innerHTML;
+            searchnull.value = this.innerHTML;
+          }
+        }
+
+        var users = [
+          { username: "visitor", password: "Visitorpassword123*", href: "visitor_login_frontpage.html" },
+          { username: "employee", password: "Employeepassword123*", href: "employee_login_frontpage.html" },
+          { username: "manager", password: "Managerpassword123*", href: "manager_login_frontpage.html" },
+        ];
+      
+        var button = document.getElementById("login");
+      
+        button.onclick = function (event) {
+          event.preventDefault(); 
+          var username = document.getElementById("username").value;
+          var password = document.getElementById("password").value;
+      
+          if (username === "" && password === "") {
+            alert("Please enter both a username and a password");
+          } else if (username === "") {
+            alert("Please enter a username");
+          } else if (password === "") {
+            alert("Please enter a password");
+          } else {
+            var found = false;
+      
+            for (var i = 0; i < users.length; i++) {
+              if (username === users[i].username && password === users[i].password) {
+                window.location.href = users[i].href;
+                found = true;
+                break;
+              }
+            }
+      
+            if (!found) {
+              alert("You have entered an invalid username or password");
+            }
+          }
+        };
+
+        
+      </script>
+      
+      
+      
+  </body>
+</html>

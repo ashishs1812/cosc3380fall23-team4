@@ -1,0 +1,61 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="style.css" rel="stylesheet">
+        
+        
+
+        <title>Gift Shop</title>
+    </head>
+
+    <body>
+        <div id="head">
+            <h1>Gift Shop Revenue Report</h1>
+            <h4>For date range <%- start %> to <%- end %></h4> 
+        </div>
+
+    
+           
+
+            <div class="container">
+                
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Gift Shop Transaction ID</th>
+                            <th scope="col">Date of Sale</th>
+                            <th scope="col">Gift ID</th>
+                            <th scope="col">Visitor ID</th>
+                            <th scope="col">Number of Items Purchased</th>
+                            <th scope="col">Discount</th>
+                            <th scope="col">Transaction Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%- entries %>
+                        
+                    </tbody>
+                </table>
+                
+
+                
+      
+                <br>
+                <br>
+                <hr>
+                <h2 style="text-align: justify">Total Revenue: $<%- total %></h2>
+                
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </body>
+
+    <footer>
+        <div id="foot">--------------------------------END OF REPORT------------------------------<div>
+    </footer>
+</html> 
