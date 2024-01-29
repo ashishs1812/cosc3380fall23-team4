@@ -1,0 +1,382 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="style.css" rel="stylesheet">
+        
+        
+
+        <title>Employee Hours</title>
+    </head>
+
+    <body>
+        <div id="head">
+            <h1>Employee Hours Report</h1>
+            <h4>For date range <%- start %> to <%- end %></h4> 
+        </div>
+
+    
+           
+
+            <div class="container">
+                <div class="head">
+                <h2>Department 1</h2>
+                </div>
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Employee First Name</th>
+                            <th scope="col">Employee MInit</th>
+                            <th scope="col">Employee Last Name</th>
+                            <th scope="col">Employee ID</th>
+                            <th scope="col">Hours</th>
+                            <th scope="col">Department Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%- d1entries %>
+                        
+                    </tbody>
+                </table>
+                
+
+                
+      
+                <br>
+                <br>
+                <hr>
+                <h3 style="text-align: justify">Department 1 Employee Hours: <%- d1total %></h2>
+                
+                <br>
+                <br>
+           
+
+
+                <div class="container">
+                    <div class="head">
+                    <h2>Department 2</h2>
+                    </div>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Employee First Name</th>
+                                <th scope="col">Employee MInit</th>
+                                <th scope="col">Employee Last Name</th>
+                                <th scope="col">Employee ID</th>
+                                <th scope="col">Hours</th>
+                                <th scope="col">Department Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%- d2entries %>
+                            
+                        </tbody>
+                    </table>
+                    
+    
+                    
+          
+                    <br>
+                    <br>
+                    <hr>
+                    <h3 style="text-align: justify">Department 2 Employee Hours: <%- d2total %></h2>
+                    
+                    <br>
+                    <br>
+
+                    <div class="container">
+                        <div class="head">
+                        <h2>Department 3</h2>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Employee First Name</th>
+                                    <th scope="col">Employee MInit</th>
+                                    <th scope="col">Employee Last Name</th>
+                                    <th scope="col">Employee ID</th>
+                                    <th scope="col">Hours</th>
+                                    <th scope="col">Department Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%- d3entries %>
+                                
+                            </tbody>
+                        </table>
+                        
+        
+                        
+              
+                        <br>
+                        <br>
+                        <hr>
+                        <h3 style="text-align: justify">Department 3 Employee Hours: <%- d3total %></h2>
+                        
+                        <br>
+                        <br>    
+
+                        <div class="container">
+                            <div class="head">
+                            <h2>Department 4</h2>
+                            </div>
+                            <table class="table table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">Employee First Name</th>
+                                        <th scope="col">Employee MInit</th>
+                                        <th scope="col">Employee Last Name</th>
+                                        <th scope="col">Employee ID</th>
+                                        <th scope="col">Hours</th>
+                                        <th scope="col">Department Number</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%- d4entries %>
+                                    
+                                </tbody>
+                            </table>
+                            
+            
+                            
+                  
+                            <br>
+                            <br>
+                            <hr>
+                            <h3 style="text-align: justify">Department 4 Employee Hours: <%- d4total %></h2>
+                            
+                            <br>
+                            <br>      
+
+                            <div class="container">
+                                <div class="head">
+                                <h2>Department 5</h2>
+                                </div>
+                                <table class="table table-bordered">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">Employee First Name</th>
+                                            <th scope="col">Employee MInit</th>
+                                            <th scope="col">Employee Last Name</th>
+                                            <th scope="col">Employee ID</th>
+                                            <th scope="col">Hours</th>
+                                            <th scope="col">Department Number</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%- d5entries %>
+                                        
+                                    </tbody>
+                                </table>
+                                
+                
+                                
+                      
+                                <br>
+                                <br>
+                                <hr>
+                                <h3 style="text-align: justify">Department 5 Employee Hours: <%- d5total %></h2>
+                                
+                                <br>
+                                <br>      
+
+                                <div class="container">
+                                    <div class="head">
+                                    <h2>Department 6</h2>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th scope="col">Employee First Name</th>
+                                                <th scope="col">Employee MInit</th>
+                                                <th scope="col">Employee Last Name</th>
+                                                <th scope="col">Employee ID</th>
+                                                <th scope="col">Hours</th>
+                                                <th scope="col">Department Number</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%- d6entries %>
+                                            
+                                        </tbody>
+                                    </table>
+                                    
+                    
+                                    
+                          
+                                    <br>
+                                    <br>
+                                    <hr>
+                                    <h3 style="text-align: justify">Department 6 Employee Hours: <%- d6total %></h2>
+                                    
+                                    <br>
+                                    <br>     
+
+                                    <div class="container">
+                                        <div class="head">
+                                        <h2>Department 7</h2>
+                                        </div>
+                                        <table class="table table-bordered">
+                                            <thead class="table-dark">
+                                                <tr>
+                                                    <th scope="col">Employee First Name</th>
+                                                    <th scope="col">Employee MInit</th>
+                                                    <th scope="col">Employee Last Name</th>
+                                                    <th scope="col">Employee ID</th>
+                                                    <th scope="col">Hours</th>
+                                                    <th scope="col">Department Number</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%- d7entries %>
+                                                
+                                            </tbody>
+                                        </table>
+                                        
+                        
+                                        
+                              
+                                        <br>
+                                        <br>
+                                        <hr>
+                                        <h3 style="text-align: justify">Department 7 Employee Hours: <%- d7total %></h2>
+                                                                            <br>
+                                    <br>     
+
+                                    <div class="container">
+                                        <div class="head">
+                                        <h2>Department 8</h2>
+                                        </div>
+                                        <table class="table table-bordered">
+                                            <thead class="table-dark">
+                                                <tr>
+                                                    <th scope="col">Employee First Name</th>
+                                                    <th scope="col">Employee MInit</th>
+                                                    <th scope="col">Employee Last Name</th>
+                                                    <th scope="col">Employee ID</th>
+                                                    <th scope="col">Hours</th>
+                                                    <th scope="col">Department Number</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%- d8entries %>
+                                                
+                                            </tbody>
+                                        </table>
+                                        
+                        
+                                        
+                              
+                                        <br>
+                                        <br>
+                                        <hr>
+                                        <h3 style="text-align: justify">Department 8 Employee Hours: <%- d8total %></h2>
+
+                                            <br>
+                                            <br>     
+        
+                                            <div class="container">
+                                                <div class="head">
+                                                <h2>Department 9</h2>
+                                                </div>
+                                                <table class="table table-bordered">
+                                                    <thead class="table-dark">
+                                                        <tr>
+                                                            <th scope="col">Employee First Name</th>
+                                                            <th scope="col">Employee MInit</th>
+                                                            <th scope="col">Employee Last Name</th>
+                                                            <th scope="col">Employee ID</th>
+                                                            <th scope="col">Hours</th>
+                                                            <th scope="col">Department Number</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <%- d9entries %>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                                
+                                
+                                                
+                                      
+                                                <br>
+                                                <br>
+                                                <hr>
+                                                <h3 style="text-align: justify">Department 9 Employee Hours: <%- d9total %></h2>   
+                                                    
+                                                    <br>
+                                                    <br>     
+                
+                                                    <div class="container">
+                                                        <div class="head">
+                                                        <h2>Department 10</h2>
+                                                        </div>
+                                                        <table class="table table-bordered">
+                                                            <thead class="table-dark">
+                                                                <tr>
+                                                                    <th scope="col">Employee First Name</th>
+                                                                    <th scope="col">Employee MInit</th>
+                                                                    <th scope="col">Employee Last Name</th>
+                                                                    <th scope="col">Employee ID</th>
+                                                                    <th scope="col">Hours</th>
+                                                                    <th scope="col">Department Number</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <%- d10entries %>
+                                                                
+                                                            </tbody>
+                                                        </table>
+                                                        
+                                        
+                                                        
+                                              
+                                                        <br>
+                                                        <br>
+                                                        <hr>
+                                                        <h3 style="text-align: justify">Department 10 Employee Hours: <%- d10total %></h2> 
+                                                            <br>
+                                                            <br>     
+                        
+                                                            <div class="container">
+                                                                <div class="head">
+                                                                <h2>Department 11</h2>
+                                                                </div>
+                                                                <table class="table table-bordered">
+                                                                    <thead class="table-dark">
+                                                                        <tr>
+                                                                            <th scope="col">Employee First Name</th>
+                                                                            <th scope="col">Employee MInit</th>
+                                                                            <th scope="col">Employee Last Name</th>
+                                                                            <th scope="col">Employee ID</th>
+                                                                            <th scope="col">Hours</th>
+                                                                            <th scope="col">Department Number</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <%- d11entries %>
+                                                                        
+                                                                    </tbody>
+                                                                </table>
+                                                                
+                        
+                                        <br>
+                                        <br>     
+                                        
+                                        
+            </div>
+        </div>
+        <p>______________________________________________</p>
+        <br>
+        <br>
+        <h2 style="text-align: justify">Total Employee Hours: <%- total %></h2>
+                
+        <br>
+        <br>
+    </body>
+
+    <footer>
+        <div id="foot">--------------------------------END OF REPORT------------------------------<div>
+    </footer>
+</html> 
